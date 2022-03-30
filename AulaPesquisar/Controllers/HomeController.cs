@@ -21,6 +21,10 @@ namespace AulaPesquisar.Controllers
         {
             return View();
         }
-        
+
+        public IActionResult Entrar()
+        {
+            return View();
+        }
     }
 }
