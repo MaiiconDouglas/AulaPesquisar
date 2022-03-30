@@ -11,10 +11,24 @@ namespace AulaPesquisar.Controllers
         {
             db = _db;   
         }
-
-        public IActionResult Index()
+            /*Tratamento para pesquisar o conteudo da variavel query*/
+        public IActionResult Index(string query)
         {
-            return View();
+            if (string.IsNullOrEmpty(query))
+            {
+                return View(db.PESSOAS.ToList());
+            }
+            else
+            {
+                return View(db.PESSOAS.Where(a =>
+                    a.nome.Contains(query)
+                    || a.cpf == (query)
+                    || a.rg.Contains(query)
+                    || a.endereco.Contains(query)
+                ));
+
+            }
+            
         }
     }
 }
